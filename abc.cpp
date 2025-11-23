@@ -1,14 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Hàm mục tiêu ví dụ (có thể thay đổi tùy bài toán)
-// Ở đây dùng Sphere function f(x) = sum(x_i^2)
+// Hàm Rastrigin
+// Global minimum tại x = 0 với giá trị = 0
+// Miền tìm kiếm tiêu chuẩn: [-5.12, 5.12]
 double objectiveFunction(const vector<double>& x) {
     double sum = 0;
-    for (double v : x) sum += v * v;
-    return sum;
+    const double A = 10;
+    const double PI = 3.14159265358979323846;
+    
+    for (double v : x) {
+        sum += (v * v - A * cos(2 * PI * v));
+    }
+    
+    return A * x.size() + sum;
 }
-
 // Hàm fitness
 double fitness(double f) {
     if (f >= 0) return 1.0 / (1.0 + f);
@@ -22,7 +28,7 @@ int main() {
     int limit = 30;          // Giới hạn trial
     int MaxCycle = 2000;     // Số vòng lặp
 
-    double LB = -10, UB = 10; // Miền tìm kiếm
+    double LB = -5.12, UB = 5.12; // Miền tìm kiếm chuẩn của Rastrigin
 
     vector<vector<double>> x(foodNumber, vector<double>(D));
     vector<double> f(foodNumber), fit(foodNumber);
