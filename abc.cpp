@@ -148,6 +148,12 @@ int main() {
     // ============================================================
     // IN RA KẾT QUẢ
     // ============================================================
+    cout << "Optimization completed.\n";
+    cout << "Number of dimensions: " << D << "\n";
+    cout << "Number of food sources: " << foodNumber << "\n";
+    cout << "Search space: [" << LB << ", " << UB << "]\n";
+    cout << "Maximum cycles: " << MaxCycle << "\n";
+    cout << "Limit for scout bees: " << limit << "\n";
     cout << "Best value found = " << bestValue << "\n";
     cout << "Best solution: ";
     for (double v : bestSolution) cout << v << " ";
